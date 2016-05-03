@@ -82,8 +82,8 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>copy "C:\Users\Dator\Documents\MoleExporter\MoleReader\Debug\MoleReader.lib" "C:\Users\Dator\Documents\MoleExporter\TestLibUser\Debug\"
-copy "C:\Users\Dator\Documents\MoleExporter\MoleReader\MoleReader\MoleReader.h" "C:\Users\Dator\Documents\MoleExporter\TestLibUser\TestLibUser\"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
