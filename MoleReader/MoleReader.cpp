@@ -15,9 +15,9 @@ using namespace std;
 
 		if (infile.is_open())
 		{
-			std::cout << ">>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<" << "\n" << "\n" << endl;
-			std::cout << "Binary Reader" << endl;
-			std::cout << "\n" << endl;
+			//std::cout << ">>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<" << "\n" << "\n" << endl;
+			//std::cout << "Binary Reader" << endl;
+			//std::cout << "\n" << endl;
 
 			/*Reading the first block of memory that is the main header. This will read
 			information about how much of each node type we have from a imported scene and
@@ -25,14 +25,14 @@ using namespace std;
 
 			infile.read((char*)&pmRead_mainHeader, sizeof(sMainHeader));
 
-			std::cout << "______________________" << endl;
-			std::cout << "Main Header" << endl;
-			std::cout << "meshCount: " << pmRead_mainHeader.meshCount << endl;
-			std::cout << "materialCount: " << pmRead_mainHeader.materialCount << endl;
-			std::cout << "lightCount: " << pmRead_mainHeader.lightCount << endl;
-			std::cout << "cameraCount: " << pmRead_mainHeader.cameraCount << endl;
+			//std::cout << "______________________" << endl;
+			//std::cout << "Main Header" << endl;
+			//std::cout << "meshCount: " << pmRead_mainHeader.meshCount << endl;
+			//std::cout << "materialCount: " << pmRead_mainHeader.materialCount << endl;
+			//std::cout << "lightCount: " << pmRead_mainHeader.lightCount << endl;
+			//std::cout << "cameraCount: " << pmRead_mainHeader.cameraCount << endl;
 
-			std::cout << "______________________" << endl;
+			//std::cout << "______________________" << endl;
 
 			if (pmRead_mainHeader.meshCount >= 1)
 			{
@@ -62,7 +62,7 @@ using namespace std;
 
 					int currMeshIndex = i + prevMeshes;
 					{
-						std::cout << "Mesh: " << currMeshIndex << endl;
+					/*	std::cout << "Mesh: " << currMeshIndex << endl;
 
 						std::cout << "Name: " << pmRead_meshList[currMeshIndex].meshName << endl;
 
@@ -100,23 +100,23 @@ using namespace std;
 
 						std::cout << "\t";
 						std::cout << "Joint Count: ";
-						std::cout << pmRead_meshList[currMeshIndex].jointCount << endl;
+						std::cout << pmRead_meshList[currMeshIndex].jointCount << endl;*/
 					}
 
 
 					if (pmRead_meshList[currMeshIndex].isAnimated == true)
 					{
 						{
-							std::cout << "\n";
-							std::cout << "Skeleton Vertex vector: " << endl;
+							/*std::cout << "\n";
+							std::cout << "Skeleton Vertex vector: " << endl;*/
 
-							std::cout << "mkList: " << endl;
+							//std::cout << "mkList: " << endl;
 							pmRead_mkList[currMeshIndex].vskList.resize(pmRead_meshList[currMeshIndex].skelAnimVertexCount);
-							std::cout << "\t";
+						/*	std::cout << "\t";
 							std::cout << pmRead_mkList[currMeshIndex].vskList.data();
 
 							std::cout << "\t";
-							std::cout << "Allocated memory for: " << pmRead_meshList[i].skelAnimVertexCount << " skel vertices" << endl << endl;
+							std::cout << "Allocated memory for: " << pmRead_meshList[i].skelAnimVertexCount << " skel vertices" << endl << endl;*/
 						}
 						const int jointCount = pmRead_meshList[currMeshIndex].jointCount;
 						/*Reading all the vertex lists for each mesh. For example if a mesh have 200 vertices,
@@ -129,16 +129,16 @@ using namespace std;
 						pmRead_meshJointHolder[currMeshIndex].jointList.resize(jointCount);
 						pmRead_meshJointHolder[currMeshIndex].perJoint.resize(jointCount);
 
-						{
-							std::cout << "\n";
-							std::cout << "Joint vector: " << endl;
+						//{
+						//	std::cout << "\n";
+						//	std::cout << "Joint vector: " << endl;
 
-							std::cout << "\t";
-							//	std::cout << pmRead_jointList.data() << endl;
+						//	std::cout << "\t";
+						//	//	std::cout << pmRead_jointList.data() << endl;
 
-							std::cout << "\t";
-							std::cout << "Allocated memory for: " << pmRead_meshList[currMeshIndex].jointCount << " joints" << endl;
-						}
+						//	std::cout << "\t";
+						//	std::cout << "Allocated memory for: " << pmRead_meshList[currMeshIndex].jointCount << " joints" << endl;
+						//}
 						/*Reading the data for all the joints that a skinned mesh have.*/
 
 						infile.read((char*)pmRead_meshJointHolder[currMeshIndex].jointList.data(), sizeof(sJoint) * jointCount);
@@ -170,14 +170,14 @@ using namespace std;
 					else
 					{
 						pmRead_mList[currMeshIndex].vList.resize(pmRead_meshList[currMeshIndex].vertexCount);
-						std::cout << "\n";
+					/*	std::cout << "\n";
 						std::cout << "Vertex vector: " << endl;
 						std::cout << "mList: " << endl;
 						std::cout << "\t";
 						std::cout << pmRead_mList[currMeshIndex].vList.data() << endl;
 
 						std::cout << "\t";
-						std::cout << "Allocated memory for " << pmRead_meshList[currMeshIndex].vertexCount << " vertices" << endl << endl;
+						std::cout << "Allocated memory for " << pmRead_meshList[currMeshIndex].vertexCount << " vertices" << endl << endl;*/
 
 						pmRead_mList[currMeshIndex].vList.resize(pmRead_meshList[currMeshIndex].vertexCount);
 
@@ -273,7 +273,7 @@ using namespace std;
 					/*Reading all the lights from the list with the size in bytes in mind.*/
 					infile.read((char*)&pmRead_lightList[currIndex], sizeof(sLight));
 					{
-						std::cout << "Light: " << i << endl;
+					/*	std::cout << "Light: " << i << endl;
 
 						std::cout << "Light vector: " << endl;
 
@@ -309,7 +309,7 @@ using namespace std;
 						std::cout << "\t";
 						std::cout << "Light intensity: " << pmRead_lightList[currIndex].intensity << endl;
 
-						std::cout << "______________________" << endl;
+						std::cout << "______________________" << endl;*/
 					}
 				}
 				prevLights = pmRead_mainHeader.lightCount;
@@ -326,7 +326,7 @@ using namespace std;
 					/*Reading all the cameras from the list with the size in bytes in mind.*/
 					infile.read((char*)&pmRead_cameraList[currIndex], sizeof(sCamera));
 					{
-						std::cout << "Camera: " << i << endl;
+						/*std::cout << "Camera: " << i << endl;
 
 						std::cout << "Camera vector: " << endl;
 
@@ -355,37 +355,37 @@ using namespace std;
 						std::cout << "\t";
 						std::cout << "Far plane: " << pmRead_cameraList[currIndex].farPlane << endl;
 
-						std::cout << "______________________" << endl;
+						std::cout << "______________________" << endl;*/
 					}
 				}
 				prevCameras += pmRead_mainHeader.cameraCount;
 			}
 			//contains the meshes
-			pmRead_meshList;
-			//Contains the vertices for each mesh
-			pmRead_mList;
-			//contains skeletal vertices for each mesh
-			pmRead_mkList;
-			//contains mesh children for each mesh
-			pmRead_meshChildList;
-			//Contains joint and animLayer-data
-			pmRead_meshJointHolder;
-			//contains the cameras
-			pmRead_cameraList;
-			//contains the lights
-			pmRead_lightList;
-			//contains the materials
-			pmRead_materialList;
+			//pmRead_meshList;
+			////Contains the vertices for each mesh
+			//pmRead_mList;
+			////contains skeletal vertices for each mesh
+			//pmRead_mkList;
+			////contains mesh children for each mesh
+			//pmRead_meshChildList;
+			////Contains joint and animLayer-data
+			//pmRead_meshJointHolder;
+			////contains the cameras
+			//pmRead_cameraList;
+			////contains the lights
+			//pmRead_lightList;
+			////contains the materials
+			//pmRead_materialList;
 
 			infile.close();
 		}
 
-		pmRead_meshList;
+		/*pmRead_meshList;
 		pmRead_mList;
 		pmRead_mkList;
 		pmRead_materialList;
-		pmRead_meshChildList;
-		int lo = 5;
+		pmRead_meshChildList;*/
+		/*int lo = 5;*/
 	}
 
 	//const std::vector<read_sMesh>* MoleReader::getMeshList()
