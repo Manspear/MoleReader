@@ -73,7 +73,7 @@
 		float vertexUV[2];
 		float tangentNormal[3];
 		float biTangentNormal[3];
-		float influences[4];
+		int influences[4];
 		float weights[4];
 	};
 
@@ -181,32 +181,32 @@
 		/**
 		Gets a vector containing the entire list of meshes.
 		**/
-		const std::vector<sMesh>* getMeshList();
+		const std::vector<sMesh> getMeshList();
 		/**
 		Gets a vector containing vectors of mesh-child-indices of meshes.
 		**/
-		const std::vector<sMChildHolder>* getMeshChildList();
+		const std::vector<sMChildHolder> getMeshChildList();
 		/**
 		Gets a vector containing the entire list of materials.
 		**/
-		const std::vector< sMaterial>* getMaterialList();
+		const std::vector< sMaterial> getMaterialList();
 		/**
 		Gets a vector containing the entire list of cameras.
 		**/
-		const std::vector<sCamera>* getCameraList();
+		const std::vector<sCamera> getCameraList();
 		/**
 		Gets a vector containing the entire list of lights.
 		**/
-		const std::vector<sLight>* getLightList();
+		const std::vector<sLight> getLightList();
 		/**
 		Gets a vector containing vectors of joints and "joint related stuff".
 		Inside the "joint related stuff" are vectors containing meshChildren
 		and animationStates. Animationstates are what separates animations from
 		one another for each joint.
 		**/
-		const std::vector<sMJHolder>* getJointKeyList();
+		const std::vector<sMJHolder> getJointKeyList();
 
-		const sMainHeader* getMainHeader();
+		const sMainHeader getMainHeader();
 
 		/**
 		Get the index of the mesh with the queried name.
@@ -225,24 +225,24 @@
 		vertexCount
 		isAnimated
 		**/
-		const sMesh* getMesh(int meshIndex);
+		const sMesh getMesh(int meshIndex);
 		/**
 		Gets the vector containing keyframes for an animationstate in a joint in a mesh.
 		Animationstates are "groups" that encapsulate keyFrames. Each animationstate represents
 		a different animation. Examples of different animationstates are "walking cycle",
 		"attack animation", "idle animation" etc.
 		**/
-		const std::vector<sKeyFrame>* getKeyList(int meshIndex, int jointIndex, int animationState);
+		const std::vector<sKeyFrame> getKeyList(int meshIndex, int jointIndex, int animationState);
 		/**
 		Gets the vector containing indexes to meshChildren belonging to a mesh.
 		**/
-		const std::vector<sMeshChild>* getMeshChildList(int meshIndex);
+		const std::vector<sMeshChild> getMeshChildList(int meshIndex);
 
-		const sMaterial* getMaterial(int materialIndex);
+		const sMaterial getMaterial(int materialIndex);
 		/**
 		Only useful if mesh has isAnimated == true
 		**/
-		const sJoint* getJoint(int meshIndex, int jointIndex);
+		const sJoint getJoint(int meshIndex, int jointIndex);
 		/**
 		Gets the vector containing indexes to meshChildren belonging to
 		a joint.
@@ -258,11 +258,11 @@
 		Our skeletal vertices will have a maximum of 4 influences and 4 weights.
 		The sum of the weights must always be 1, making it "100%".
 		**/
-		const std::vector<sSkelAnimVertex>* getSkelVertexList(int meshIndex);
+		const std::vector<sSkelAnimVertex> getSkelVertexList(int meshIndex);
 		/**
 		Gets the vector containing vertices belonging to a mesh.
 		**/
-		const std::vector<sVertex>* getVertexList(int meshIndex);
+		const std::vector<sVertex> getVertexList(int meshIndex);
 
 		MoleReader();
 		~MoleReader();

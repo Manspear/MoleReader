@@ -395,14 +395,14 @@ using namespace std;
 
 
 
-	const std::vector<sMesh>* MoleReader::getMeshList()
+	const std::vector<sMesh> MoleReader::getMeshList()
 	{
-		return &pmRead_meshList;
+		return pmRead_meshList;
 	}
 
-	const std::vector<sMChildHolder>* MoleReader::getMeshChildList()
+	const std::vector<sMChildHolder> MoleReader::getMeshChildList()
 	{
-		return &pmRead_meshChildList;
+		return pmRead_meshChildList;
 	}
 
 	//const std::vector<read_m>* MoleReader::getVertexList()
@@ -415,29 +415,29 @@ using namespace std;
 	//	return &pmRead_mkList;
 	//}
 
-	const std::vector<sMaterial>* MoleReader::getMaterialList()
+	const std::vector<sMaterial> MoleReader::getMaterialList()
 	{
-		return &pmRead_materialList;
+		return pmRead_materialList;
 	}
 
-	const std::vector<sCamera>* MoleReader::getCameraList()
+	const std::vector<sCamera> MoleReader::getCameraList()
 	{
-		return &pmRead_cameraList;
+		return pmRead_cameraList;
 	}
 
-	const std::vector<sLight>* MoleReader::getLightList()
+	const std::vector<sLight> MoleReader::getLightList()
 	{
-		return &pmRead_lightList;
+		return pmRead_lightList;
 	}
 
-	const std::vector<sMJHolder>* MoleReader::getJointKeyList()
+	const std::vector<sMJHolder> MoleReader::getJointKeyList()
 	{
-		return &pmRead_meshJointHolder;
+		return pmRead_meshJointHolder;
 	}
 
-	const sMainHeader * MoleReader::getMainHeader()
+	const sMainHeader  MoleReader::getMainHeader()
 	{
-		return &pmRead_mainHeader;
+		return pmRead_mainHeader;
 	}
 
 	const int MoleReader::getMeshIndex(string meshName)
@@ -453,45 +453,45 @@ using namespace std;
 		return -1337;
 	}
 
-	const sMesh * MoleReader::getMesh(int meshIndex)
+	const sMesh MoleReader::getMesh(int meshIndex)
 	{
-		return &pmRead_meshList[meshIndex];
+		return pmRead_meshList[meshIndex];
 	}
 
-	const std::vector<sKeyFrame>* MoleReader::getKeyList(int meshIndex, int jointIndex, int animationState)
+	const std::vector<sKeyFrame> MoleReader::getKeyList(int meshIndex, int jointIndex, int animationState)
 	{
 
-		return &pmRead_meshJointHolder[meshIndex].perJoint[jointIndex].animationStates[animationState].keyFrames;
+		return pmRead_meshJointHolder[meshIndex].perJoint[jointIndex].animationStates[animationState].keyFrames;
 	}
 
-	const std::vector<sMeshChild>* MoleReader::getMeshChildList(int meshIndex)
+	const std::vector<sMeshChild> MoleReader::getMeshChildList(int meshIndex)
 	{
-		return &pmRead_meshChildList[meshIndex].meshChildList;
+		return pmRead_meshChildList[meshIndex].meshChildList;
 	}
 
-	const sMaterial * MoleReader::getMaterial(int materialIndex)
+	const sMaterial  MoleReader::getMaterial(int materialIndex)
 	{
-		return &pmRead_materialList[materialIndex];
+		return pmRead_materialList[materialIndex];
 	}
 
-	const sJoint * MoleReader::getJoint(int meshIndex, int jointIndex)
+	const sJoint  MoleReader::getJoint(int meshIndex, int jointIndex)
 	{
-		return &pmRead_meshJointHolder[meshIndex].jointList[jointIndex];
+		return pmRead_meshJointHolder[meshIndex].jointList[jointIndex];
 	}
 
 	const std::vector<sMeshChild> MoleReader::getJointMeshChildList(int meshIndex, int jointIndex)
 	{
-		return pmRead_meshJointHolder[jointIndex].perJoint[jointIndex].meshChildren;
+		return pmRead_meshJointHolder[meshIndex].perJoint[jointIndex].meshChildren;
 	}
 
-	const std::vector<sSkelAnimVertex>* MoleReader::getSkelVertexList(int meshIndex)
+	const std::vector<sSkelAnimVertex> MoleReader::getSkelVertexList(int meshIndex)
 	{
-		return &pmRead_mkList[meshIndex].vskList;
+		return pmRead_mkList[meshIndex].vskList;
 	}
 
-	const std::vector<sVertex>* MoleReader::getVertexList(int meshIndex)
+	const std::vector<sVertex> MoleReader::getVertexList(int meshIndex)
 	{
-		return &pmRead_mList[meshIndex].vList;
+		return pmRead_mList[meshIndex].vList;
 	}
 
 	MoleReader::MoleReader()
